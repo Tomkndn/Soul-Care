@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Doctor from "../Assets/doctor-picture.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarCheck, faAngleUp } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../Styles/Hero.css";
+import Doctor from "../Assets/hero-doctor.png";
 
 function Hero() {
   const navigate = useNavigate();
@@ -36,48 +36,46 @@ function Hero() {
     <div className="section-container">
       <div className="hero-section">
         <div className="text-section">
-          <p className="text-headline">❤️ Health comes first</p>
+          <p className="text-headline">Take care of your mind</p>
           <h2 className="text-title">
-            Find your Doctor and make an Appointments
+            Book a mental health checkup and take the first step towards a healthier you
           </h2>
-          <p className="text-descritpion">
-            Talk to online doctors and get medical advice, online prescriptions,
-            refills and medical notes within minutes. On-demand healthcare
-            services at your fingertips.
+          <p className="text-description">
+            Our team of licensed therapists and psychiatrists are here to support you. Get personalized guidance, therapy, and treatment plans tailored to your needs.
           </p>
           <button
             className="text-appointment-btn"
             type="button"
             onClick={handleBookAppointmentClick}
           >
-            <FontAwesomeIcon icon={faCalendarCheck} /> Book Appointment
+            <FontAwesomeIcon icon={faCalendarCheck} /> Book an Appointment
           </button>
           <div className="text-stats">
             <div className="text-stats-container">
-              <p>145k+</p>
-              <p>Receive Patients</p>
+              <p>10,000+</p>
+              <p>Happy clients</p>
             </div>
 
             <div className="text-stats-container">
-              <p>50+</p>
-              <p>Expert Doctors</p>
+              <p>500+</p>
+              <p>Expert therapists</p>
             </div>
 
             <div className="text-stats-container">
-              <p>10+</p>
-              <p>Years of Experience</p>
+              <p>95%</p>
+              <p>Client satisfaction rate</p>
             </div>
           </div>
         </div>
 
         <div className="hero-image-section">
-          <img className="hero-image1" src={Doctor} alt="Doctor" />
+          <img className="hero-image1" src={Doctor} alt="Mental Health" />
         </div>
       </div>
 
       <div
         onClick={scrollToTop}
-        className={`scroll-up ${goUp ? "show-scroll" : ""}`}
+        className={`scroll-up ${goUp? "show-scroll" : ""}`}
       >
         <FontAwesomeIcon icon={faAngleUp} />
       </div>
