@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
 const Login = () => {
@@ -10,7 +9,6 @@ const Login = () => {
 
   return (
     <div>
-    <Navbar />
     <div className="container my-5 d-flex justify-content-center">
       <div className="p-5 shadow-lg rounded-3">
         <h1 className="text-primary mb-4 text-center">Login</h1>
@@ -59,7 +57,7 @@ const Login = () => {
           New user?{" "}
           <Link to="/register" className="text-decoration-none fw-bold">
             Register Here
-          </Link> */
+          </Link> 
          </div> 
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "../Styles/AppointmentForm.css";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -71,11 +71,11 @@ function AppointmentForm() {
 
   return (
     <div className="appointment-form-section">
-      <h1 className="legal-siteTitle">
+      {/* <h1 className="legal-siteTitle">
         <Link to="/">
           Health <span className="legal-siteSign">+</span>
         </Link>
-      </h1>
+      </h1> */}
 
       <div className="form-container">
         <h2 className="form-title">
