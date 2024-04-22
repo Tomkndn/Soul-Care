@@ -1,8 +1,8 @@
 {
-  "name": "health-plus",
+  "name": "care-plus",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alkaison.github.io/Health-Plus/",
+  "homepage": "",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.5.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",

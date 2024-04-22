@@ -43,36 +43,31 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <a href="#services" className="navbar-links">
-            Services
-          </a>
+          <Link to="/tests" className="navbar-links">
+            Tests
+          </Link>
         </li>
         <li>
-          <a href="#about" className="navbar-links">
-            About
-          </a>
-        </li>
-        <li>
-          <a href="#reviews" className="navbar-links">
-            Reviews
-          </a>
-        </li>
-        <li>
-          <a href="#doctors" className="navbar-links">
+          <Link to="/doctor" className="navbar-links">
             Doctors
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#doctors" className="navbar-links">
+          <Link to="/appointment" className="navbar-links">
             Appointment
-          </a>
+          </Link>
+        </li>
+        <li>
+          <Link to="/about" className="navbar-links">
+            About
+          </Link>
         </li>
       </ul>
       <Link to="/login" style={linkstyle}>
-      <div >
-                  <i className="fas fa-sign-in-alt me-2"></i>
-                  Login
-      </div>
+        <div>
+          <i className="fas fa-sign-in-alt me-2"></i>
+          Login
+        </div>
       </Link>
 
       {/* Mobile */}
