@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import '../Styles/Login.css'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -7,9 +8,9 @@ const Login = () => {
 
   return (
     <div className="container-fluid py-5">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center align-items-center">
         <div className="col-md-4">
-          <div className="p-5 shadow-lg rounded-3 mb-4"> {/* Added mb-4 for bottom margin */}
+          <div className="p-5 shadow-lg rounded-3 mb-4 boxx"> {/* Added mb-4 for bottom margin */}
             <h1 className="text-primary mb-4 text-center">Login</h1>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="mb-3">
@@ -52,7 +53,7 @@ const Login = () => {
               </button>
               </div>
             </form>
-            <div className="row row-cols-2 g-3 mt-2">
+            <div className="row row-cols-7 g-3 mt-2 icon_box">
               <div className="col text-end">
                 <button type="button" className="btn btn-primary">
                   <i className="fab fa-google text-white"></i>

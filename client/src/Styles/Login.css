@@ -1,0 +1,27 @@
+@media only screen and (min-width:426px) and (max-width:1024px) {
+    .row div{
+        width: 60% !important;
+    }
+    .row div div.col-md-4{
+        width: 100% !important;
+    }
+    .row div div.p-5{
+        width: 100% !important;
+    }   
+    form button.btn{
+        width: 250px !important;
+    }
+    form{
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .boxx{
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+}

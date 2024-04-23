@@ -43,7 +43,7 @@ function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="/tests" className="navbar-links">
+          <Link to="/testpage" className="navbar-links">
             Tests
           </Link>
         </li>
@@ -63,12 +63,19 @@ function Navbar() {
           </Link>
         </li>
       </ul>
-      <Link to="/login" style={linkstyle}>
-        <div className="Login_btn d-flex align-items-center justify-content-center mt-2" style={{fontSize: "1rem"}}>
-        <i class="fa-solid fa-user me-2"></i>
-          Login
+      <div className="dropdown">
+        <Link to="/login" style={linkstyle} className="Login">
+          <div className="Login_btn d-flex align-items-center justify-content-center mt-2" style={{fontSize: "1.5rem"}}>
+          <i class="fa-solid fa-user me-2"></i>
+            Login
+          </div>
+        </Link>
+        <div class="dropdown-content">
+          <a href="/"><i class="fa-solid fa-notes-medical"></i>History</a>
+          <a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
         </div>
-      </Link>
+      </div>
+      
 
       {/* Mobile */}
       <div className={`mobile-navbar taskbar ${nav ? "open-nav" : ""}`}>
@@ -100,6 +107,11 @@ function Navbar() {
           <li>
             <Link onClick={openNav} to="/about">
               About
+            </Link>
+          </li>
+          <li>
+            <Link onClick={openNav} to="/login">
+              Login
             </Link>
           </li>
         </ul>
