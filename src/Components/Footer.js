@@ -10,7 +10,7 @@ function Footer() {
         <div className="ft-info">
           <div className="ft-info-p1">
             <p className="ft-title">
-              Care <span className="ft-sign">+</span>
+              Harmony
             </p>
             <p className="ft-description">
               Talk to online doctors and get medical advice, online
@@ -23,8 +23,8 @@ function Footer() {
         </div>
 
         <div className="ft-list">
-          <p className="ft-list-title">Services</p>
           <ul className="ft-list-items">
+            <li className="ft-list-title">Services</li>
             <li>
               <a href="#services">Emergency Care</a>
             </li>
@@ -44,8 +44,8 @@ function Footer() {
         </div>
 
         <div className="ft-list">
-          <p className="ft-list-title">Legal</p>
           <ul className="ft-list-items">
+            <li className="ft-list-title">Legal</li>
             <li>
               <Link to={"/legal"}>General Info</Link>
             </li>
@@ -65,8 +65,8 @@ function Footer() {
         </div>
 
         <div className="ft-list" id="contact">
-          <p className="ft-list-title">Talk To Us</p>
           <ul className="ft-list-items">
+            <li className="ft-list-title">Talk To Us</li>
             <li>
               <a href="mailto:support@healthplus.com">support@healthplus.com</a>
             </li>
@@ -86,7 +86,7 @@ function Footer() {
       </div>
 
       <div className="ft-copyright">
-        <p>© 2013-2023 Health+. All rights reserved.</p>
+        <p>© 2023-2024 Harmony. All rights reserved.</p>
 
         <ul className="ft-social-links">
           <li>

@@ -11,14 +11,14 @@ function LegalDocs() {
     <div className="legal-section-title">
       <h1 className="legal-siteTitle">
         <Link to="/">
-          Health <span className="legal-siteSign">+</span>
+          Harmony
         </Link>
       </h1>
 
       <div className="legal-text-content">
         <p className="legal-title">General Info</p>
         <p className="legal-description">
-          Welcome to Health Plus, your trusted online healthcare platform. Our
+          Welcome to Harmony, your trusted online healthcare platform. Our
           mission is to provide accessible and personalized healthcare services
           to individuals seeking expert medical advice and treatment. By using
           our platform, you agree to the terms outlined in our Privacy Policy
@@ -35,7 +35,7 @@ function LegalDocs() {
 
         <p className="legal-title">Terms of Service</p>
         <p className="legal-description">
-          When using Health Plus, you agree to our Terms of Service. This
+          When using Harmony, you agree to our Terms of Service. This
           includes guidelines for using our platform, interacting with doctors,
           and the responsibilities of both parties. It's essential to understand
           these terms to ensure a smooth experience for all users.
@@ -52,7 +52,7 @@ function LegalDocs() {
 
         <p className="legal-title">How it Works</p>
         <p className="legal-description">
-          Health Plus is designed to simplify healthcare access. You can choose
+          Harmony is designed to simplify healthcare access. You can choose
           a specialist, schedule an appointment, and engage in a virtual
           consultation. Our specialists offer personalized advice and treatment
           plans tailored to your needs. Please remember that emergencies require
@@ -62,7 +62,7 @@ function LegalDocs() {
       </div>
 
       <div className="legal-footer">
-        <p>© 2013-2023 Health+. All rights reserved.</p>
+        <p>© 2023-2024 Harmony. All rights reserved.</p>
       </div>
     </div>
   );
