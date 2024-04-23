@@ -9,16 +9,17 @@ import Appointment from "./Pages/Appointment";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Doctors from "./Pages/Doctors";
-import About from "./Pages/About";
+import About from "./Components/About";
 import Footer from "./Components/Footer";
 function App() {
+
   return (
     <div className="App">
-      <Router basename="/Health-Plus">
+      <Router >
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/About" element={<About />} />
+          <Route path="/about" element={<About />} />
           <Route path="/legal" element={<Legal />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/doctor" element={<Doctors />} />
