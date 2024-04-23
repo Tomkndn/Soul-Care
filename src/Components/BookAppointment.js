@@ -1,5 +1,4 @@
 import React from "react";
-import Doctor from "../Assets/doctor-book-appointment.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
@@ -23,10 +22,10 @@ function BookAppointment() {
 
       <div className="ba-text-content">
         <h3 className="ba-title">
-          <span>Why Choose Health</span>
+          <span>Why Choose Harmony</span>
         </h3>
         <p className="ba-description">
-          Discover the reasons to choose Health Plus for your healthcare needs.
+          Discover the reasons to choose Harmony for your healthcare needs.
           Experience expert care, convenience, and personalized solutions,
           making your well-being our top priority. Join us on a journey to
           better health and a happier life.

@@ -115,6 +115,12 @@
 .mobile-navbar-links li a:hover {
     color: #0cc2ea;
 }
+.taskbar{
+    background: linear-gradient(to right, #7091E6, #FFFFFF);
+    /* background: rgb(8,6,42);
+background: linear-gradient(90deg, rgba(8,6,42,1) 0%, rgba(52,54,54,1) 12%, rgba(0,212,255,1) 100%); */
+
+}
 /* Responsive */
 @media screen and (max-width: 900px) {
     .navbar-btn, .navbar-items {

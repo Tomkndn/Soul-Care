@@ -9,6 +9,8 @@ import Appointment from "./Pages/Appointment";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Doctors from "./Pages/Doctors";
+import About from "./Pages/About";
+import Footer from "./Components/Footer";
 function App() {
   return (
     <div className="App">
@@ -16,6 +18,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/About" element={<About />} />
           <Route path="/legal" element={<Legal />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/doctor" element={<Doctors />} />
@@ -23,6 +26,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer /> 
       </Router>
     </div>
   );

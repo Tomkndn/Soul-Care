@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../Components/Footer";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -10,7 +9,7 @@ const Register = () => {
   return (
     <div className="container-fluid py-5"> {/* Adjusted container padding */}
       <div className="row justify-content-center">
-        <div className="col-md-6">
+        <div className="col-md-4">
           <div className="p-5 shadow-lg rounded-3 mb-4"> {/* Adjusted padding */}
             <h1 className="text-primary mb-4 text-center">Register</h1>
             <form onSubmit={(e) => e.preventDefault()}>
@@ -53,6 +52,7 @@ const Register = () => {
                   required
                 />
               </div>
+              <div className="d-flex align-items-center justify-content-center mt-4">
               <button
                 onClick={() => {
                   if (name && email && password) {
@@ -61,18 +61,19 @@ const Register = () => {
                   }
                 }}
                 type="submit"
-                className="btn btn-primary w-100"
+                className="btn btn-primary w-50 py-2"
               >
                 Sign Up
               </button>
+              </div>
             </form>
-            <div className="row row-cols-2 g-3 mt-4">
-              <div className="col text-center">
+            <div className="row row-cols-2 g-3 mt-2">
+              <div className="col text-end">
                 <button type="button" className="btn btn-primary">
                   <i className="fab fa-google text-white"></i>
                 </button>
               </div>
-              <div className="col text-center">
+              <div className="col">
                 <button type="button" className="btn btn-primary">
                   <i className="fab fa-github text-white"></i>
                 </button>
@@ -87,7 +88,6 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

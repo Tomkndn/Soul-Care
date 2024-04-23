@@ -19,7 +19,7 @@ const Doctor = (props) => {
             <h6>
               <i className="fas fa-calendar-week"></i> Fee: {fees}$
             </h6>
-            <Link to="/success" className="text-decoration-none">
+            <Link to="/appointment" className="text-decoration-none">
               <button className="btn btn-primary d-block mx-auto">
                 Appointment
               </button>

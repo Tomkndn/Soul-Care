@@ -19,6 +19,27 @@
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
-
+  <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+  <script>
+    window.botpressWebChat.init({
+        "composerPlaceholder": "Chat with Bot",
+        "botConversationDescription": "We provide real time mental health solution.",
+        "botId": "df24a100-5f62-4de6-ba08-1c5a3ecba381",
+        "hostUrl": "https://cdn.botpress.cloud/webchat/v1",
+        "messagingUrl": "https://messaging.botpress.cloud",
+        "clientId": "df24a100-5f62-4de6-ba08-1c5a3ecba381",
+        "webhookId": "5b66a501-0792-47fe-9f44-587a9e5db6ce",
+        "lazySocket": true,
+        "themeName": "prism",
+        "botName": "Charaka",
+        "avatarUrl": "https://cdn1.iconfinder.com/data/icons/bots/280/bot-10-2-512.png",
+        "stylesheet": "https://webchat-styler-css.botpress.app/prod/d2218af0-5dab-4d70-ae6e-a7a956a98b32/v19583/style.css",
+        "frontendVersion": "v1",
+        "useSessionStorage": true,
+        "enableConversationDeletion": true,
+        "theme": "prism",
+        "themeColor": "#2563eb"
+    });
+  </script>
 </body>
 </html>

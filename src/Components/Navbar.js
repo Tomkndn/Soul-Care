@@ -31,7 +31,7 @@ function Navbar() {
     <div className="navbar-section">
       <h1 className="navbar-title">
         <Link to="/">
-          Care <span className="navbar-sign">+</span>
+          Harmony
         </Link>
       </h1>
 
@@ -64,48 +64,43 @@ function Navbar() {
         </li>
       </ul>
       <Link to="/login" style={linkstyle}>
-        <div>
-          <i className="fas fa-sign-in-alt me-2"></i>
+        <div className="Login_btn d-flex align-items-center justify-content-center mt-2" style={{fontSize: "1rem"}}>
+        <i class="fa-solid fa-user me-2"></i>
           Login
         </div>
       </Link>
 
       {/* Mobile */}
-      <div className={`mobile-navbar ${nav ? "open-nav" : ""}`}>
+      <div className={`mobile-navbar taskbar ${nav ? "open-nav" : ""}`}>
         <div onClick={openNav} className="mobile-navbar-close">
           <FontAwesomeIcon icon={faXmark} className="hamb-icon" />
         </div>
 
-        <ul className="mobile-navbar-links">
+        <ul className="mobile-navbar-links ">
           <li>
             <Link onClick={openNav} to="/">
               Home
             </Link>
           </li>
           <li>
-            <a onClick={openNav} href="#services">
-              Services
-            </a>
+            <Link onClick={openNav} to="/tests">
+              Tests
+            </Link>
           </li>
           <li>
-            <a onClick={openNav} href="#about">
-              About
-            </a>
-          </li>
-          <li>
-            <a onClick={openNav} href="#reviews">
-              Reviews
-            </a>
-          </li>
-          <li>
-            <a onClick={openNav} href="#doctors">
+            <Link onClick={openNav} to="/doctor">
               Doctors
-            </a>
+            </Link>
           </li>
           <li>
-            <a onClick={openNav} href="#contact">
-              Contact
-            </a>
+            <Link onClick={openNav} to="/appointment">
+              Appointment
+            </Link>
+          </li>
+          <li>
+            <Link onClick={openNav} to="/about">
+              About
+            </Link>
           </li>
         </ul>
       </div>

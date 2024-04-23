@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../Components/Footer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +8,7 @@ const Login = () => {
   return (
     <div className="container-fluid py-5">
       <div className="row justify-content-center">
-        <div className="col-md-6">
+        <div className="col-md-4">
           <div className="p-5 shadow-lg rounded-3 mb-4"> {/* Added mb-4 for bottom margin */}
             <h1 className="text-primary mb-4 text-center">Login</h1>
             <form onSubmit={(e) => e.preventDefault()}>
@@ -39,6 +38,7 @@ const Login = () => {
                   required
                 />
               </div>
+              <div className="d-flex align-items-center justify-content-center mt-5">
               <button
                 onClick={() => {
                   if (email && password) {
@@ -46,18 +46,19 @@ const Login = () => {
                   }
                 }}
                 type="submit"
-                className="btn btn-primary w-100"
+                className="btn btn-primary w-50 py-2"
               >
                 Sign in
               </button>
+              </div>
             </form>
-            <div className="row row-cols-2 g-3 mt-4">
-              <div className="col text-center">
+            <div className="row row-cols-2 g-3 mt-2">
+              <div className="col text-end">
                 <button type="button" className="btn btn-primary">
                   <i className="fab fa-google text-white"></i>
                 </button>
               </div>
-              <div className="col text-center">
+              <div className="col">
                 <button type="button" className="btn btn-primary">
                   <i className="fab fa-github text-white"></i>
                 </button>
@@ -72,7 +73,6 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

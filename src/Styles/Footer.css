@@ -75,7 +75,7 @@
     border: 2px solid #1A8EFD;
 }
 /* Lists */
-.ft-list-title {
+ul li.ft-list-title {
     margin: 16px 0;
     font-family: 'Rubik', sans-serif;
     font-size: 24px;

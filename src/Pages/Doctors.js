@@ -1,9 +1,8 @@
 import React from "react";
-import useDoctors from "../Hooks/useDoctors";
+import doctors from '../Scripts/doctor.json'
 import Doctor from "../Components/Doctor";
 
 const Doctors = () => {
-  const [doctors] = useDoctors();
 
   return (
     <div className="my-5">
