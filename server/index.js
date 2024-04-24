@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+// const formDataRouter = require('./user');
 require("dotenv").config({ path: '.env.local' });
 
 const app = express();
@@ -24,8 +25,18 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String
 });
+const appointmentSchema = new mongoose.Schema({
+  patientName: String,
+  patientNumber: String,
+  patientGender: String,
+  appointmentTime: String,
+  doctor: String,
+  preferredMode: String
+});
 
 const User = mongoose.model('users', userSchema);
+const Appointment = mongoose.model('Appointment', appointmentSchema);
+
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -74,6 +85,19 @@ app.post("/login", async (req, res) => {
   } catch (error) {
     console.error("Error signing in:", error);
     res.status(500).send("Internal server error");
+  }
+});
+
+// Route to handle form submission
+app.post('/submit-appointment', async (req, res) => {
+  try {
+      const { patientName, patientNumber, patientGender, appointmentTime,doctor,preferredMode } = req.body;
+      const appointment = new Appointment({ patientName, patientNumber, patientGender, appointmentTime,doctor, preferredMode });
+      await appointment.save();
+      res.status(201).send('Appointment data saved successfully');
+  } catch (error) {
+      console.error('Error saving appointment data:', error);
+      res.status(500).send('Internal server error');
   }
 });
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 import "../Styles/AppointmentForm.css";
 import { toast } from "react-toastify";
 
@@ -8,15 +7,46 @@ function AppointmentForm() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
+  const [formData, setFormData] = useState({
+    patientName: "",
+    patientNumber: "",
+    patientGender: "default",
+    appointmentDate: "",
+    appointmentTime: "",
+    doctor:"default",
+    preferredMode: "default"
+  });
+
   const [patientName, setPatientName] = useState("");
   const [patientNumber, setPatientNumber] = useState("");
   const [patientGender, setPatientGender] = useState("default");
+  const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
   const [preferredMode, setPreferredMode] = useState("default");
+  const [doctor, setDoctor] = useState("default");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
-  const handleSubmit = (e) => {
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormErrors({ ...formErrors, [e.target.name]: "" });
+
+    if (e.target.name === "patientName") {
+      setPatientName(e.target.value);
+    } else if (e.target.name === "patientNumber") {
+      setPatientNumber(e.target.value);
+    } else if (e.target.name === "patientGender") {
+      setPatientGender(e.target.value);
+    } else if (e.target.name === "appointmentTime") {
+      setAppointmentTime(e.target.value);
+    } else if (e.target.name === "preferredMode") {
+      setPreferredMode(e.target.value);
+    } else if (e.target.name === "doctor"){
+      setDoctor(e.target.value);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Validate form inputs
@@ -48,35 +78,58 @@ function AppointmentForm() {
     if (preferredMode === "default") {
       errors.preferredMode = "Please select preferred mode";
     }
+    if (doctor === "default") {
+      errors.doctor = "Please select doctor name";
+    }
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
       return;
     }
 
+    // Backend
+    try {
+      const response = await fetch("http://localhost:5000/submit-appointment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error("Error submitting form");
+      }
+      if (response.ok) {
+        toast.success("Form submitted successfully");
+      }
+
+      setFormData({
+        patientName: "",
+        patientNumber: "",
+        patientGender: "default",
+        appointmentDate: "",
+        appointmentTime: "",
+        preferredMode: "default",
+        doctor: "default"
+      });
+    } catch (error) {
+      console.error("Errorsubmitting form:", error);
+    }
+
     // Reset form fields and errors after successful submission
     setPatientName("");
     setPatientNumber("");
     setPatientGender("default");
+    setAppointmentDate("");
     setAppointmentTime("");
     setPreferredMode("default");
+    setDoctor("default");
     setFormErrors({});
-
-    toast.success("Appointment Scheduled !", {
-      position: toast.POSITION.TOP_CENTER,
-      onOpen: () => setIsSubmitted(true),
-      onClose: () => setIsSubmitted(false),
-    });
   };
 
   return (
     <div className="appointment-form-section">
-      {/* <h1 className="legal-siteTitle">
-        <Link to="/">
-          Health <span className="legal-siteSign">+</span>
-        </Link>
-      </h1> */}
-
       <div className="form-container">
         <h2 className="form-title">
           <span>Appointment Form</span>
@@ -86,8 +139,9 @@ function AppointmentForm() {
             Patient Full Name:
             <input
               type="text"
+              name="patientName"
               value={patientName}
-              onChange={(e) => setPatientName(e.target.value)}
+              onChange={handleInputChange}
               required
             />
             {formErrors.patientName && (
@@ -99,8 +153,9 @@ function AppointmentForm() {
             Patient Phone Number:
             <input
               type="text"
+              name="patientNumber"
               value={patientNumber}
-              onChange={(e) => setPatientNumber(e.target.value)}
+              onChange={handleInputChange}
               required
             />
             {formErrors.patientNumber && (
@@ -111,8 +166,9 @@ function AppointmentForm() {
           <label>
             Patient Gender:
             <select
+              name="patientGender"
               value={patientGender}
-              onChange={(e) => setPatientGender(e.target.value)}
+              onChange={handleInputChange}
               required
             >
               <option value="default">Select</option>
@@ -125,12 +181,14 @@ function AppointmentForm() {
             )}
           </label>
 
+          
           <label>
             Preferred Appointment Time:
             <input
               type="datetime-local"
+              name="appointmentTime"
               value={appointmentTime}
-              onChange={(e) => setAppointmentTime(e.target.value)}
+              onChange={handleInputChange}
               required
             />
             {formErrors.appointmentTime && (
@@ -139,10 +197,31 @@ function AppointmentForm() {
           </label>
 
           <label>
+            Psychiatrist name:
+            <select
+              name="doctor"
+              value={doctor}
+              onChange={handleInputChange}
+              required
+            >
+              <option value="default">Select</option>
+              <option value="Mistry">Dr. Mistry</option>
+              <option value="Ether">Dr. Ether</option>
+              <option value="Truluck">Dr. Truluck</option>
+              <option value="Pyne">Dr. Pyne</option>
+              <option value="Johnathan">Dr. Johnathan</option>
+            </select>
+            {formErrors.doctor && (
+              <p className="error-message">{formErrors.doctor}</p>
+            )}
+          </label>
+
+          <label>
             Preferred Mode:
             <select
+              name="preferredMode"
               value={preferredMode}
-              onChange={(e) => setPreferredMode(e.target.value)}
+              onChange={handleInputChange}
               required
             >
               <option value="default">Select</option>
