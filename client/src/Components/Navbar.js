@@ -67,7 +67,7 @@ function Navbar() {
           </div>
         </Link>
         {isSign && <div className="dropdown-content">
-          <Link to="/wait">
+          <Link to="/userhistory">
             <i className="fa-solid fa-notes-medical"></i>History
           </Link>
           <Link onClick={() => {

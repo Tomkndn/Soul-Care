@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
+import UserHistory from "./Pages/UserHistory";
 import Legal from "./Pages/Legal";
 import NotFound from "./Pages/NotFound";
 import Appointment from "./Pages/Appointment";
@@ -27,8 +28,10 @@ function App() {
         <Navbar />
         {/* {<Anavbar />} */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<AHome />} />
           <Route path="/about" element={<About />} />
+          <Route path="/userhistory" element={<UserHistory />} />
           <Route path="/legal" element={<Legal />} />
           <Route path="/appointment" element={isSign ? <Appointment /> : <Login />} />
           <Route path="/doctor" element={<Doctors />} />
@@ -40,8 +43,8 @@ function App() {
           <Route path="/Aappointment" element={<Aappointment />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* <Afooter />  */}
-        <Footer/>
+        <Afooter /> 
+        {/* <Footer/> */}
       </Router>
       <ToastContainer autoClose={3000} limit={1} closeButton={false} />
     </div>
