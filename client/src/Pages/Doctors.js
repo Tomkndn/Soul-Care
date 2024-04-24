@@ -3,7 +3,6 @@ import doctors from '../Scripts/doctor.json'
 import Doctor from "../Components/Doctor";
 
 const Doctors = () => {
-
   return (
     <div className="my-5">
       <h2 className="text-center blue-color">Request Appointment</h2>

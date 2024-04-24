@@ -1,10 +1,58 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import '../Styles/Login.css'
+import '../Styles/Login.css';
+import { Link, useNavigate,useLocation } from "react-router-dom";
+import { toast } from "react-toastify";
+import {useAuth} from '../Auth/useAuth'
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { userInfo } = useAuth();
+  const location = useLocation();
+  const navigation = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  // if(!isSign) toast.info("Please Sign in first")
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        toast.success("User signed in successfully!",{position: "top-center"});
+        const data = await response.json()
+        userInfo(data)
+        if (location.pathname === '/login') {
+          navigation('/')
+        } else {
+          navigation(location.pathname)
+        }
+      } else {
+        if (response.statusText === "Not Found") {
+          toast.error("Email not registered")
+        } else if (response.statusText === "Unauthorized") {
+          toast.error("Wrong password");
+        }
+      }
+    } catch (error) {
+      console.error("Error signing in:", error);
+    }
+  };
 
   return (
     <div className="container-fluid py-5">
@@ -12,14 +60,15 @@ const Login = () => {
         <div className="col-md-4">
           <div className="p-5 shadow-lg rounded-3 mb-4 boxx"> {/* Added mb-4 for bottom margin */}
             <h1 className="text-primary mb-4 text-center">Login</h1>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleSubmit} method="POST">
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Email address
                 </label>
                 <input
-                  onBlur={(e) => setEmail(e.target.value)}
+                  onChange={handleChange}
                   type="email"
+                  name="email"
                   className="form-control"
                   id="exampleInputEmail1"
                   style={{ width: "100%" }}
@@ -31,8 +80,9 @@ const Login = () => {
                   Password
                 </label>
                 <input
-                  onBlur={(e) => setPassword(e.target.value)}
+                  onChange={handleChange}
                   type="password"
+                  name="password"
                   className="form-control"
                   id="exampleInputPassword1"
                   style={{ width: "100%" }}
@@ -40,17 +90,12 @@ const Login = () => {
                 />
               </div>
               <div className="d-flex align-items-center justify-content-center mt-5">
-              <button
-                onClick={() => {
-                  if (email && password) {
-                    // processLogin(email, password);
-                  }
-                }}
-                type="submit"
-                className="btn btn-primary w-50 py-2"
-              >
-                Sign in
-              </button>
+                <button
+                  type="submit"
+                  className="btn btn-primary w-50 py-2"
+                >
+                  Sign in
+                </button>
               </div>
             </form>
             <div className="row row-cols-7 g-3 mt-2 icon_box">

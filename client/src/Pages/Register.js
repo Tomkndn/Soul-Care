@@ -1,26 +1,66 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import '../Styles/Login.css'
+import { toast } from "react-toastify";
+import { useNavigate, Link } from "react-router-dom";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigation = useNavigate();
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok) {
+        toast.success("Registered Successfully");
+        setFormData({
+          username: "",
+          email: "",
+          password: "",
+        });
+        navigation("/login");
+      } else {
+        const data = await response.json();
+        toast.error(data.error);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <div className="container-fluid py-5"> {/* Adjusted container padding */}
+    <div className="container-fluid py-5">
       <div className="row justify-content-center">
         <div className="col-md-4">
           <div className="p-5 shadow-lg rounded-3 mb-4 boxx"> {/* Adjusted padding */}
             <h1 className="text-primary mb-4 text-center">Register</h1>
-            <form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={handleSubmit} method="post">
               <div className="mb-3">
                 <label htmlFor="exampleInputName" className="form-label">
                   Name
                 </label>
                 <input
-                  onBlur={(e) => setName(e.target.value)}
+                  onBlur={handleChange}
                   type="text"
+                  name="username"
                   className="form-control"
                   id="exampleInputName"
                   style={{ width: "100%" }}
@@ -32,8 +72,9 @@ const Register = () => {
                   Email address
                 </label>
                 <input
-                  onBlur={(e) => setEmail(e.target.value)}
+                  onBlur={handleChange}
                   type="email"
+                  name="email"
                   className="form-control"
                   id="exampleInputEmail1"
                   style={{ width: "100%" }}
@@ -45,8 +86,9 @@ const Register = () => {
                   Password
                 </label>
                 <input
-                  onBlur={(e) => setPassword(e.target.value)}
+                  onBlur={handleChange}
                   type="password"
+                  name="password"
                   className="form-control"
                   id="exampleInputPassword1"
                   style={{ width: "100%" }}
@@ -54,18 +96,12 @@ const Register = () => {
                 />
               </div>
               <div className="d-flex align-items-center justify-content-center mt-4">
-              <button
-                onClick={() => {
-                  if (name && email && password) {
-                    // createNewUser(name, email, password);
-                    console.log(name);
-                  }
-                }}
-                type="submit"
-                className="btn btn-primary w-50 py-2"
-              >
-                Sign Up
-              </button>
+                <button
+                  type="submit"
+                  className="btn btn-primary w-50 py-2"
+                >
+                  Sign Up
+                </button>
               </div>
             </form>
             <div className="row row-cols-7 g-3 mt-2 icon_box">

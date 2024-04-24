@@ -23,7 +23,6 @@ const Doctor = (props) => {
               <button className="btn btn-primary d-block mx-auto">
                 Appointment
               </button>
-              
             </Link>
           </div>
         </div>

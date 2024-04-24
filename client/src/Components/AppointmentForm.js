@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import "../Styles/AppointmentForm.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 function AppointmentForm() {
   useEffect(() => {
@@ -172,7 +172,7 @@ function AppointmentForm() {
         <p>Your privacy is important to us</p>
       </div>
 
-      <ToastContainer autoClose={5000} limit={1} closeButton={false} />
+      {/* <ToastContainer autoClose={5000} limit={1} closeButton={false} /> */}
     </div>
   );
 }

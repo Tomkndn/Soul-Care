@@ -1,38 +1,31 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import {
-  faBars,
-  faXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import {useAuth} from '../Auth/useAuth'
+import {faBars,faXmark,} from "@fortawesome/free-solid-svg-icons";
 import "../Styles/Navbar.css";
 import { Link } from "react-router-dom";
-
-const linkstyle={
-  textDecoration: "none",
-  fontSize:"1.5vw",
-  marginTop:"-3vh"
-
-};
+import { toast } from "react-toastify";
 
 
 function Navbar() {
+
+  const { isSign,user,SignOut } = useAuth();
   const [nav, setNav] = useState(false);
   
-
   const openNav = () => {
     setNav(!nav);
   };
 
-  
-  
+  const linkstyle={
+    textDecoration: "none",
+    fontSize:"1.5vw",
+    marginTop:"-3vh"
+  };
 
   return (
     <div className="navbar-section">
       <h1 className="navbar-title">
-        <Link to="/">
-          Harmony
-        </Link>
+        <Link to="/">Harmony</Link>
       </h1>
 
       {/* Desktop */}
@@ -64,18 +57,28 @@ function Navbar() {
         </li>
       </ul>
       <div className="dropdown">
-        <Link to="/login" style={linkstyle} className="Login">
-          <div className="Login_btn d-flex align-items-center justify-content-center mt-2" style={{fontSize: "1.5rem"}}>
-          <i class="fa-solid fa-user me-2"></i>
-            Login
+        <Link to={isSign? '#':'/login'} style={linkstyle} className="Login">
+          <div
+            className="Login_btn d-flex align-items-center justify-content-center mt-2"
+            style={{ fontSize: "1.5rem" }}
+          >
+            <i className="fa-solid fa-user me-2"></i>
+            {isSign ? <>{user.username}</> : <>Login</>}
           </div>
         </Link>
-        <div class="dropdown-content">
-          <a href="/"><i class="fa-solid fa-notes-medical"></i>History</a>
-          <a href="/"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
-        </div>
+        {isSign && <div className="dropdown-content">
+          <Link to="/wait">
+            <i className="fa-solid fa-notes-medical"></i>History
+          </Link>
+          <Link onClick={() => {
+            SignOut();
+            toast.warning("Signout successfully",{position: "top-center"})
+          }
+          }>
+            <i className="fa-solid fa-right-from-bracket"></i>Logout
+          </Link>
+        </div>}
       </div>
-      
 
       {/* Mobile */}
       <div className={`mobile-navbar taskbar ${nav ? "open-nav" : ""}`}>
@@ -110,9 +113,18 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link onClick={openNav} to="/login">
-              Login
-            </Link>
+            {isSign ? (
+              <Link onClick={() => {
+                openNav()
+                SignOut()
+              }} to="/">
+                Logout
+              </Link>
+            ) : (
+              <Link onClick={openNav} to="/login">
+                Login
+              </Link>
+            )}
           </li>
         </ul>
       </div>
