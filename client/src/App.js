@@ -12,8 +12,12 @@ import About from "./Components/About";
 import Testpage from "./Pages/Testpage";
 import Test from "./Pages/Test";
 import Footer from "./Components/Footer";
+import Anavbar from "./Components/Admin/Anavbar"
+import Aappointment from "./Components/Admin/Aappointment";
+import AHome from "./Components/Admin/AHome";
+import Afooter from "./Components/Admin/Afooter";
+import { useAuth } from "./Auth/useAuth";
 import { ToastContainer } from "react-toastify";
-import {useAuth} from './Auth/useAuth'
 
 function App() {
   const { isSign } = useAuth();
@@ -21,6 +25,7 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
+        {/* {<Anavbar />} */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -31,9 +36,12 @@ function App() {
           <Route path="/testpage" element={isSign ? <Testpage /> : <Login />} />
           <Route path="/test" element={isSign ? <Test /> : <Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/ANavbar" element={<Anavbar />} />
+          <Route path="/Aappointment" element={<Aappointment />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
+        {/* <Afooter />  */}
+        <Footer/>
       </Router>
       <ToastContainer autoClose={3000} limit={1} closeButton={false} />
     </div>
