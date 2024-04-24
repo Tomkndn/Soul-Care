@@ -60,12 +60,13 @@ let sumOfDigits = (str) => {
               {currentQuestion.options.map((option, index) => (
                 <div className='d-flex align-items-center mt-2' key={index}>
                   <input 
+                    id={`${index}ans`}
                     type='radio' 
-                    name='ques' 
+                    name='ques'
                     checked={index === selectedOption} 
                     onChange={() => handleOptionSelect(index)}
                   />
-                  <label>{Object.values(option)}</label> {/* Assuming options are objects with a single key-value pair */}
+                  <label for={`${index}ans`}>{Object.values(option)}</label> {/* Assuming options are objects with a single key-value pair */}
                 </div>
               ))}
             </form>

@@ -47,11 +47,15 @@ const Register = () => {
   };
 
   return (
-    <div className="container-fluid py-5">
+    <div className="container-fluid py-5 top">
       <div className="row justify-content-center">
-        <div className="col-md-4">
+        <div className="col-md-4 cont">
           <div className="p-5 shadow-lg rounded-3 mb-4 boxx"> {/* Adjusted padding */}
             <h1 className="text-primary mb-4 text-center">Register</h1>
+            <div className="d-flex w-100 registerSelect gap-4 mb-3">
+              <div className="d-flex align-items-center justify-content-center gap-2 ress"><input type="radio" id="user" name="register"/><label for="user">User</label></div>
+              <div className="d-flex align-items-center justify-content-center gap-2 ress"><input type="radio" id="admin" name="register"/><label for="admin">Admin</label></div>
+            </div>
             <form onSubmit={handleSubmit} method="post">
               <div className="mb-3">
                 <label htmlFor="exampleInputName" className="form-label">
@@ -105,12 +109,12 @@ const Register = () => {
               </div>
             </form>
             <div className="row row-cols-7 g-3 mt-2 icon_box">
-              <div className="col text-end">
+              <div className="col text-end1 text-end">
                 <button type="button" className="btn btn-primary">
                   <i className="fab fa-google text-white"></i>
                 </button>
               </div>
-              <div className="col">
+              <div className="col text-end1 text">
                 <button type="button" className="btn btn-primary">
                   <i className="fab fa-github text-white"></i>
                 </button>
