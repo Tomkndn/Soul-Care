@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 const Register = () => {
   const navigation = useNavigate();
   const [formData, setFormData] = useState({
+    category: '',
     username: '',
     email: '',
     password: '',
@@ -32,6 +33,7 @@ const Register = () => {
       if (response.ok) {
         toast.success("Registered Successfully");
         setFormData({
+          category: "",
           username: "",
           email: "",
           password: "",
@@ -50,13 +52,35 @@ const Register = () => {
     <div className="container-fluid py-5 top">
       <div className="row justify-content-center">
         <div className="col-md-4 cont">
-          <div className="p-5 shadow-lg rounded-3 mb-4 boxx"> {/* Adjusted padding */}
+          <div className="p-5 shadow-lg rounded-3 mb-4 boxx">
+            {" "}
+            {/* Adjusted padding */}
             <h1 className="text-primary mb-4 text-center">Register</h1>
-            <div className="d-flex w-100 registerSelect gap-4 mb-3">
-              <div className="d-flex align-items-center justify-content-center gap-2 ress"><input type="radio" id="user" name="register"/><label for="user">User</label></div>
-              <div className="d-flex align-items-center justify-content-center gap-2 ress"><input type="radio" id="admin" name="register"/><label for="admin">Admin</label></div>
-            </div>
             <form onSubmit={handleSubmit} method="post">
+              <div className="d-flex w-100 registerSelect gap-4 mb-3">
+                <div className="d-flex align-items-center justify-content-center gap-2 ress">
+                  <input
+                    type="radio"
+                    id="user"
+                    value="user"
+                    name="category"
+                    onChange={handleChange}
+                    checked={true}
+                  />
+                  <label htmlFor="user">User</label>
+                </div>
+                <div className="d-flex align-items-center justify-content-center gap-2 ress">
+                  <input
+                    type="radio"
+                    id="admin"
+                    value="admin"
+                    name="category"
+                    onChange={handleChange}
+                  />
+                  <label htmlFor="admin">Admin</label>
+                </div>
+              </div>
+
               <div className="mb-3">
                 <label htmlFor="exampleInputName" className="form-label">
                   Name
@@ -100,10 +124,7 @@ const Register = () => {
                 />
               </div>
               <div className="d-flex align-items-center justify-content-center mt-4">
-                <button
-                  type="submit"
-                  className="btn btn-primary w-50 py-2"
-                >
+                <button type="submit" className="btn btn-primary w-50 py-2">
                   Sign Up
                 </button>
               </div>

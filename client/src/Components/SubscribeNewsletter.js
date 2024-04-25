@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function SubscribeNewsletter() {
@@ -52,7 +52,6 @@ function SubscribeNewsletter() {
         Subscribe
       </button>
 
-      <ToastContainer autoClose={4000} limit={1} closeButton={false} />
     </div>
   );
 }

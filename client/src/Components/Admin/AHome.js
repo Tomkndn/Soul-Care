@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './Astyle/Ahome.css'; 
+import { useAuth } from '../../Auth/useAuth';
 
 function DoctorHomePage() {
+    const {user} = useAuth()
     return (
         <div className="doctor-home">
             <header className="header">
-                <h1 className="title">Welcome, Dr. Smith!</h1>
+                <h1 className="title">Welcome, Dr. {user.username}!</h1>
                 <p className="subtitle">Here you can manage customer tests, view scores, and provide support.</p>
             </header>
             <main className="main-content">

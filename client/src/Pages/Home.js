@@ -6,8 +6,7 @@ import Reviews from "../Components/Reviews";
 
 function Home() {
   return (
-    <div className="home-section">
-      
+    <div className="home-section">  
       <Hero />
       <Info />
       <BookAppointment />

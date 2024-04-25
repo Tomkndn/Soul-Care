@@ -1,46 +1,26 @@
 import React from 'react';
 import Acart from "./Acart.js";
+import useGetData from '../../Auth/useGetData'
 
-const PatientCard ={
-    name:"Yogesh",
-    number:7014931904,
-    gender:"Male",
-    appointmentTime:"2024-4-24",
-    preferMode:"voice",
-    symptomsLevel:"Moderate",
-    mentalTestScore:45
-} 
 
-function Aappointment(){
+function Aappointment() {
+    const { data } = useGetData('http://localhost:5000/getappointment');
     return (
         <div>
-            <Acart 
-                name={PatientCard.name}
-                number={PatientCard.number}
-                gender={PatientCard.gender}
-                appointmentTime={PatientCard.appointmentTime}
-                preferMode={PatientCard.preferMode}
-                symptomsLevel={PatientCard.symptomsLevel}
-                mentalTestScore={PatientCard.mentalTestScore} 
-            />
-            <Acart 
-                name={PatientCard.name}
-                number={PatientCard.number}
-                gender={PatientCard.gender}
-                appointmentTime={PatientCard.appointmentTime}
-                preferMode={PatientCard.preferMode}
-                symptomsLevel={PatientCard.symptomsLevel}
-                mentalTestScore={PatientCard.mentalTestScore} 
-            />
-            <Acart 
-                name={PatientCard.name}
-                number={PatientCard.number}
-                gender={PatientCard.gender}
-                appointmentTime={PatientCard.appointmentTime}
-                preferMode={PatientCard.preferMode}
-                symptomsLevel={PatientCard.symptomsLevel}
-                mentalTestScore={PatientCard.mentalTestScore} 
-            />
+            {data.map((appoint,index) => {
+                return (
+                  <Acart
+                    key={index}
+                    name={appoint.patientName}
+                    number={appoint.patientNumber}
+                    gender={appoint.patientGender}
+                    appointmentTime={appoint.appointmentTime}
+                    preferMode={appoint.preferredMode}
+                    symptomsLevel={appoint.symptomsLevel}
+                    mentalTestScore={appoint.mentalTestScore}
+                  />
+                );
+        })}
         </div>
     );
 };

@@ -34,8 +34,8 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
       if (response.ok) {
-        toast.success("User signed in successfully!",{position: "top-center"});
         const data = await response.json()
+        toast.success(data.category+ " signed in successfully!");
         userInfo(data)
         if (location.pathname === '/login') {
           navigation('/')

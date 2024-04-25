@@ -21,32 +21,39 @@ import { useAuth } from "./Auth/useAuth";
 import { ToastContainer } from "react-toastify";
 
 function App() {
-  const { isSign } = useAuth();
+  const { isSign,isAdmin } = useAuth();
   return (
     <div className="App">
       <Router>
-        <Navbar />
-        {/* {<Anavbar />} */}
+        {isAdmin? <Anavbar />
+          :
+          <Navbar />}
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
-          <Route path="/" element={<AHome />} />
+          <Route path="/" element={isAdmin?<AHome/>:<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/userhistory" element={<UserHistory />} />
           <Route path="/legal" element={<Legal />} />
-          <Route path="/appointment" element={isSign ? <Appointment /> : <Login />} />
+          <Route
+            path="/appointment"
+            element={isSign ? <Appointment /> : <Login />}
+          />
+          <Route path="/Aappointment" element={isSign ? <Aappointment />: <Login/>} />
           <Route path="/doctor" element={<Doctors />} />
           <Route path="/login" element={<Login />} />
           <Route path="/testpage" element={isSign ? <Testpage /> : <Login />} />
           <Route path="/test" element={isSign ? <Test /> : <Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/ANavbar" element={<Anavbar />} />
-          <Route path="/Aappointment" element={<Aappointment />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Afooter /> 
-        {/* <Footer/> */}
+        {isAdmin? <Afooter /> :
+        <Footer/>}
       </Router>
-      <ToastContainer autoClose={3000} limit={1} closeButton={false} />
+      <ToastContainer
+        autoClose={3000}
+        limit={1}
+        closeButton={false}
+        position="top-center"
+      />
     </div>
   );
 }

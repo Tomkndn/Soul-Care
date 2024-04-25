@@ -21,11 +21,13 @@ db.once('open', () => console.log('Connected to MongoDB'));
 
 // MongoDB schema and model
 const userSchema = new mongoose.Schema({
+    category: String,
     username: String,
     email: String,
     password: String
 });
 const appointmentSchema = new mongoose.Schema({
+  userEmail: String,
   patientName: String,
   patientNumber: String,
   patientGender: String,
@@ -46,7 +48,7 @@ app.use(cors());
 app.post('/register',  async (req, res) => {
   
     try {
-      const { username, email, password } = req.body;
+      const { category,username, email, password } = req.body;
       uname = username.charAt(0).toUpperCase() + username.slice(1);
 
       const existingUser = await User.findOne({ email });
@@ -56,7 +58,7 @@ app.post('/register',  async (req, res) => {
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
-      const user = new User({ username :uname, email, password: hashedPassword });
+      const user = new User({ category,username :uname, email, password: hashedPassword });
       await user.save();
       res.status(201).send('User signed up successfully');
   } catch (error) {
@@ -78,6 +80,7 @@ app.post("/login", async (req, res) => {
     }
     const data = {
       _id: user.id,
+      category: user.category,
       username: user.username,
       email: user.email
     }
@@ -91,13 +94,36 @@ app.post("/login", async (req, res) => {
 // Route to handle form submission
 app.post('/submit-appointment', async (req, res) => {
   try {
-      const { patientName, patientNumber, patientGender, appointmentTime,doctor,preferredMode } = req.body;
-      const appointment = new Appointment({ patientName, patientNumber, patientGender, appointmentTime,doctor, preferredMode });
+      const { userEmail,patientName, patientNumber, patientGender, appointmentTime,doctor,preferredMode } = req.body;
+      const appointment = new Appointment({ userEmail,patientName, patientNumber, patientGender, appointmentTime,doctor, preferredMode });
       await appointment.save();
       res.status(201).send('Appointment data saved successfully');
   } catch (error) {
       console.error('Error saving appointment data:', error);
       res.status(500).send('Internal server error');
+  }
+});
+
+// Route for getting all apointments
+app.get('/getappointment', async (req, res) => {
+  try {
+    const data = await Appointment.find();
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Route for getting all user history
+app.get("/gethistory", async (req, res) => {
+  try {
+    const { email } = req.query;
+    const data = await Appointment.find({userEmail: email});
+    res.json(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 

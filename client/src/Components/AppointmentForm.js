@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../Styles/AppointmentForm.css";
 import { toast } from "react-toastify";
+import {useAuth} from '../Auth/useAuth'
 
 function AppointmentForm() {
+  const { user } = useAuth();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
   const [formData, setFormData] = useState({
+    userEmail: user.email,
     patientName: "",
     patientNumber: "",
     patientGender: "default",
@@ -20,7 +23,7 @@ function AppointmentForm() {
   const [patientName, setPatientName] = useState("");
   const [patientNumber, setPatientNumber] = useState("");
   const [patientGender, setPatientGender] = useState("default");
-  const [appointmentDate, setAppointmentDate] = useState("");
+  // const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
   const [preferredMode, setPreferredMode] = useState("default");
   const [doctor, setDoctor] = useState("default");
@@ -105,14 +108,16 @@ function AppointmentForm() {
       }
 
       setFormData({
+        userEmail: user.email,
         patientName: "",
         patientNumber: "",
         patientGender: "default",
-        appointmentDate: "",
+        // appointmentDate: "",
         appointmentTime: "",
         preferredMode: "default",
         doctor: "default"
       });
+      setIsSubmitted(true);
     } catch (error) {
       console.error("Errorsubmitting form:", error);
     }
@@ -121,7 +126,7 @@ function AppointmentForm() {
     setPatientName("");
     setPatientNumber("");
     setPatientGender("default");
-    setAppointmentDate("");
+    // setAppointmentDate("");
     setAppointmentTime("");
     setPreferredMode("default");
     setDoctor("default");
@@ -251,7 +256,6 @@ function AppointmentForm() {
         <p>Your privacy is important to us</p>
       </div>
 
-      {/* <ToastContainer autoClose={5000} limit={1} closeButton={false} /> */}
     </div>
   );
 }
