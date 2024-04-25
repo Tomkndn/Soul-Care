@@ -3,10 +3,15 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 // const formDataRouter = require('./user');
+
+const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
 require("dotenv").config({ path: '.env.local' });
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
 
 // MongoDB connection from compass
 // mongoose.connect(process.env.MONGODB_URI);
@@ -43,6 +48,7 @@ const Appointment = mongoose.model('Appointment', appointmentSchema);
 // Middleware to parse JSON bodies
 app.use(express.json());
 app.use(cors());
+app.use(bodyParser.json())
 
 // Route to handle user signup
 app.post('/register',  async (req, res) => {
@@ -124,6 +130,92 @@ app.get("/gethistory", async (req, res) => {
   } catch (error) {
     console.error("Error fetching data:", error);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// generating random meeting link
+function generateRandomMeetLink() {
+  const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+  const linkLength = 3; // Adjust the length of the random part of the link
+  let meetLink = 'https://meet.google.com/';
+
+  for (let i = 0; i < linkLength; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      meetLink += characters[randomIndex];
+  }
+
+  meetLink += '-';
+
+  for (let i = 0; i < linkLength; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      meetLink += characters[randomIndex];
+  }
+
+  meetLink += '-';
+
+  for (let i = 0; i < linkLength; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      meetLink += characters[randomIndex];
+  }
+
+  return meetLink;
+}
+
+// route for sending emails to the registered appointment
+app.post("/sendEmail", async (req,res)=>{
+  const {email,name} = req.body;
+  try {
+    const google_meet = generateRandomMeetLink();
+    const send_to = email;
+    const subject = "Appointment Scheduled";
+    const message = `Hello ${name},\n\nYour appointment is scheduled on the chosen time.\n\nHere is your Google Meet link: ${google_meet}`;
+
+    
+    const mailOptions = {
+            from: 'mahakalyogesh@gmail.com', 
+            to: send_to,
+            subject: subject,
+            text: message,
+        }
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.error('Error sending email:', error);
+          res.status(500).json({ success: false, message: 'Failed to send email' });
+      } else {
+          console.log('Email sent:', info.response);
+          res.status(200).json({ success: true, message: 'Email sent successfully' });
+      }
+  });
+    res.status(200).json({success:true, message:"Email sent"})
+  } catch (error) {
+    console.error("Error sending email:", error); 
+    res.status(500).json({ success: false, message: "Failed to send email", error: error.message });
+  }
+})
+
+
+// Create a transporter object using SMTP transport
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: 587,
+  secure: false,
+  auth: {
+      user: process.env.SMTP_MAIL, 
+      pass: process.env.SMTP_PASS
+  },
+  tls: {
+      rejectUnauthorized: false
+  }
+});
+
+// route for deleting the appointment form the db.
+app.delete('/app_req/:id', async (req, res) => {
+  try {
+    const deletedDoc = await Appointment.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Document deleted successfully', deletedDoc });
+  } catch (error) {
+    console.error('Error deleting document:', error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

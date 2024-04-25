@@ -31,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={isAdmin?<AHome/>:<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/Health-Plus" element={<Home />} />
           <Route path="/userhistory" element={<UserHistory />} />
           <Route path="/legal" element={<Legal />} />
           <Route

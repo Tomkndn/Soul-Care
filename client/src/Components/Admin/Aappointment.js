@@ -11,6 +11,8 @@ function Aappointment() {
                 return (
                   <Acart
                     key={index}
+                    id={appoint._id}
+                    email={appoint.userEmail}
                     name={appoint.patientName}
                     number={appoint.patientNumber}
                     gender={appoint.patientGender}
