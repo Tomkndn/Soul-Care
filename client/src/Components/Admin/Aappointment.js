@@ -1,10 +1,15 @@
 import React from 'react';
 import Acart from "./Acart.js";
 import useGetData from '../../Auth/useGetData'
-
+import NoAppoint from '../../Pages/NoAppoint.js'
 
 function Aappointment() {
     const { data } = useGetData('http://localhost:5000/getappointment');
+
+    // If data is empty, render NotFound component
+    if (!data || data.length === 0) {
+      return <NoAppoint />;
+  }
     return (
         <div>
             {data.map((appoint,index) => {

@@ -23,7 +23,7 @@ function AppointmentForm() {
   const [patientName, setPatientName] = useState("");
   const [patientNumber, setPatientNumber] = useState("");
   const [patientGender, setPatientGender] = useState("default");
-  // const [appointmentDate, setAppointmentDate] = useState("");
+  const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
   const [preferredMode, setPreferredMode] = useState("default");
   const [doctor, setDoctor] = useState("default");
@@ -112,7 +112,7 @@ function AppointmentForm() {
         patientName: "",
         patientNumber: "",
         patientGender: "default",
-        // appointmentDate: "",
+        appointmentDate: "",
         appointmentTime: "",
         preferredMode: "default",
         doctor: "default"
@@ -126,7 +126,7 @@ function AppointmentForm() {
     setPatientName("");
     setPatientNumber("");
     setPatientGender("default");
-    // setAppointmentDate("");
+    setAppointmentDate("");
     setAppointmentTime("");
     setPreferredMode("default");
     setDoctor("default");
@@ -188,9 +188,9 @@ function AppointmentForm() {
 
           
           <label>
-            Preferred Appointment Time:
+            Preferred Appointment Date:
             <input
-              type="datetime-local"
+              type="date"
               name="appointmentTime"
               value={appointmentTime}
               onChange={handleInputChange}

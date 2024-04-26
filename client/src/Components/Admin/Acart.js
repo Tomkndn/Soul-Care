@@ -53,10 +53,10 @@ function Acart(props) {
                 <p><span className="label">Name:</span> {name}</p>
                 <p><span className="label">Patient Number:</span> {number}</p>
                 <p><span className="label">Gender:</span> {gender}</p>
-                <p><span className="label">Appointment Time:</span> {appointmentTime}</p>
+                <p><span className="label">Appointment Date:</span> {appointmentTime.split('T')[0]}</p>
                 <p><span className="label">Preferred Mode:</span> {preferMode}</p>
-                <p><span className="label">Level of Symptoms:</span> {symptomsLevel}</p>
-                <p><span className="label">Mental Test Score:</span> {mentalTestScore}</p>
+                {/* <p><span className="label">Level of Symptoms:</span> {symptomsLevel}</p> */}
+                {/* <p><span className="label">Mental Test Score:</span> {mentalTestScore}</p> */}
                 
             </div>
             <div className="button-container">

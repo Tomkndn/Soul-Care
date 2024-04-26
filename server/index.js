@@ -221,6 +221,7 @@ app.delete('/app_req/:id', async (req, res) => {
     console.error('Error deleting document:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
+  // res.redirect('/Aappointment')
 });
 
 // Start the server

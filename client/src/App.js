@@ -33,9 +33,9 @@ function App() {
           <Navbar />}
         <Routes>
           <Route path="/" element={isAdmin?<AHome/>:<Home />} />
+          <Route path="/Health-Plus" element={isAdmin?<AHome/>:<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/Health-Plus" element={<Home />} />
-          <Route path="/userhistory" element={<UserHistory />} />
+          <Route path="/userhistory" element={isSign ? <UserHistory />:<Login />} />
           <Route path="/legal" element={<Legal />} />
           <Route
             path="/appointment"
@@ -55,7 +55,7 @@ function App() {
         <Footer/>}
       </Router>
       <ToastContainer
-        autoClose={3000}
+        autoClose={1000}
         limit={1}
         closeButton={false}
         position="top-center"
