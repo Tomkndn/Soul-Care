@@ -29,7 +29,9 @@ const userSchema = new mongoose.Schema({
     category: String,
     username: String,
     email: String,
-    password: String
+    password: String,
+    symptoms: String,
+    score: String,
 });
 const appointmentSchema = new mongoose.Schema({
   userEmail: String,
@@ -54,7 +56,7 @@ app.use(bodyParser.json())
 app.post('/register',  async (req, res) => {
   
     try {
-      const { category,username, email, password } = req.body;
+      const { category,username, email, password,symptoms,score } = req.body;
       uname = username.charAt(0).toUpperCase() + username.slice(1);
 
       const existingUser = await User.findOne({ email });
@@ -64,7 +66,7 @@ app.post('/register',  async (req, res) => {
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
-      const user = new User({ category,username :uname, email, password: hashedPassword });
+      const user = new User({ category,username :uname, email, password: hashedPassword,symptoms,score });
       await user.save();
       res.status(201).send('User signed up successfully');
   } catch (error) {
@@ -88,7 +90,9 @@ app.post("/login", async (req, res) => {
       _id: user.id,
       category: user.category,
       username: user.username,
-      email: user.email
+      email: user.email,
+      symptoms: user.symptoms,
+      score: user.score,
     }
     res.status(200).json(data);
   } catch (error) {

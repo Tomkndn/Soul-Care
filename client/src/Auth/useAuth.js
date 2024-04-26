@@ -25,8 +25,12 @@ export const AuthProvider = ({ children }) => {
     setIsAdmin(false);
   };
 
+  const updatingScore = (symp,score)=>{
+    setUser({...user},{symptoms:symp,score:score})
+  }
+
   return (
-    <AuthContext.Provider value={{ user, userInfo, SignOut, isSign, isAdmin }}>
+    <AuthContext.Provider value={{ user, userInfo, SignOut, isSign, isAdmin,updatingScore }}>
       {children}
     </AuthContext.Provider>
   );

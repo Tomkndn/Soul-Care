@@ -45,4 +45,6 @@ input[type=radio] {
     width: 10%;
     height: 1.5rem;
 }
-
+.para{
+    font-size: 18px !important;
+}

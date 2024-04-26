@@ -10,6 +10,8 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
+    symptoms: "Not taken test yet",
+    score: "Not taken test yet",
   });
 
   const handleChange = (e) => {
@@ -37,6 +39,8 @@ const Register = () => {
           username: "",
           email: "",
           password: "",
+          symptoms: "Not taken test yet",
+          score: "Not taken test yet",
         });
         navigation("/login");
       } else {
