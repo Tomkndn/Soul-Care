@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updatingScore = (symp,score)=>{
-    setUser({...user},{symptoms:symp,score:score})
+    console.log(symp,score)
   }
 
   return (

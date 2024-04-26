@@ -19,6 +19,8 @@ import AHome from "./Components/Admin/AHome";
 import Afooter from "./Components/Admin/Afooter";
 import { useAuth } from "./Auth/useAuth";
 import { ToastContainer } from "react-toastify";
+import Notyet from "./Pages/Notyet";
+import NoAppoint from "./Pages/NoAppoint";
 
 
 function App() {
@@ -45,6 +47,8 @@ function App() {
           <Route path="/testpage" element={isSign ? <Testpage /> : <Login />} />
           <Route path="/test" element={isSign ? <Test /> : <Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/notyet" element={<Notyet />} />
+          <Route path="/noappoint" element={<NoAppoint />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         {isAdmin? <Afooter /> :

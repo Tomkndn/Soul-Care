@@ -103,10 +103,16 @@ const Test = () => {
               <p style={{ opacity: '0.5' }}>Here are your score: {sumOfDigits(userScores)}</p>
               <h3 style={{color:"brown",opacity:"0.7"}}>{data.category}</h3>
               <h1>{data.emoji}</h1>
-              <h5 className='para'>{data.explanation}</h5>
-              <p className='para' style={{paddingInline:"150px"}}>{data.Recommendation}</p>
+              <div className='Suggestion card p-2'>
+                <div className='Explanation'>
+                  <p className='para'><strong>Here is explanation for you : </strong>{data.explanation}</p>
+                </div>
+                <div className='Recommendation'>
+                  <p className='para'><strong>Here is recommendation for you : </strong>{data.Recommendation}</p>
+                </div>
+              </div>
             </div>
-            {/* {updatingScore(data.category,sumOfDigits(userScores))} */}
+            {updatingScore(data.category,sumOfDigits(userScores))}
           </div>
         )
          : (
