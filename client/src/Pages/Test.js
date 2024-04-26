@@ -13,7 +13,7 @@ const Test = () => {
     const userScore = sumOfDigits(userScores);
     const resultData = check_result(userScore);
     setData(resultData);
-  }, [userScores]); // Only re-run the effect if userScores changes
+  }, [userScores]); 
 
   const check_result = (ans) => {
     if (ans <= 35) {

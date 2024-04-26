@@ -24,21 +24,21 @@ function Footer() {
 
         <div className="ft-list">
           <ul className="ft-list-items">
-            <li className="ft-list-title">Services</li>
+            <li className="ft-list-title">Self-care</li>
             <li>
-              <a href="#services">Emergency Care</a>
+              <a href="#services">Mind-Body Connection</a>
             </li>
             <li>
-              <a href="#services">Heart Disease</a>
+              <a href="#services">Psychiatric Evaluation</a>
             </li>
             <li>
-              <a href="#services">Dental Care</a>
+              <a href="#services">Holistic Health</a>
             </li>
             <li>
-              <a href="#services">Prescription</a>
+              <a href="#services">Support Groups</a>
             </li>
             <li>
-              <a href="#services">Insights for doctors</a>
+              <a href="#services">Mindfulness</a>
             </li>
           </ul>
         </div>
@@ -68,11 +68,11 @@ function Footer() {
           <ul className="ft-list-items">
             <li className="ft-list-title">Talk To Us</li>
             <li>
-              <a href="mailto:support@healthplus.com">support@healthplus.com</a>
+              <a href="mailto:support@Harmony.com">support@Harmony.com</a>
             </li>
             <li>
-              <a href="mailto:appointment@healthplus.com">
-                appointment@healthplus.com
+              <a href="mailto:appointment@Harmony.com">
+                appointment@Harmony.com
               </a>
             </li>
             <li>
