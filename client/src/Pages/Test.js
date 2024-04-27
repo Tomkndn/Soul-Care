@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import '../Styles/Test.css';
 import questions from '../Scripts/test.js';
 import result from '../Scripts/testResult.js';
-import {useAuth} from '../Auth/useAuth.js'
 
 const Test = () => {
   const [data, setData] = useState({ category: "", explanation: "", Recommendation: "",emoji:"" });
-  const {updatingScore} = useAuth();
 
   const [userScores, setUserScores] = useState(Array(questions.length).fill(0));
   useEffect(() => {
@@ -112,7 +110,7 @@ const Test = () => {
                 </div>
               </div>
             </div>
-            {updatingScore(data.category,sumOfDigits(userScores))}
+            {/* {updatingScore(data.category,sumOfDigits(userScores))} */}
           </div>
         )
          : (

@@ -25,8 +25,8 @@ function History() {
                     name={hist.doctor}
                     appointmentTime={hist.appointmentTime}
                     preferMode={hist.preferredMode}
-                    symptomsLevel={hist.symptomsLevel}
-                    mentalTestScore={hist.mentalTestScore}
+                    symptomsLevel={user.symptoms}
+                    mentalTestScore={user.score}
                 />
             ))}
         </div>

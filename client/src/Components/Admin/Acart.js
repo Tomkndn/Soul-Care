@@ -3,24 +3,17 @@ import "./Astyle/Aappointment.css";
 import { toast } from 'react-toastify';
 
 function Acart(props) {
-    const { id,email,name, number, gender, appointmentTime, preferMode, symptomsLevel, mentalTestScore } = props;
-    const deleteData = async(id)=>{
-        try {
-            const response = await fetch(`http://localhost:5000/app_req/${id}`, {
-              method: 'DELETE',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-            });
-            // if (!response.ok) {
-            //   toast.error('Failed to delete appointment');
-            // }
-            // const data = await response.json();
-            // toast.success(data.message); 
-        } catch (error) {
-          console.error('Error:', error.message);
-        } 
-    }
+    const {
+      id,
+      email,
+      name,
+      number,
+      gender,
+      appointmentTime,
+      preferMode,
+      deleteData,
+    } = props;
+    
 
     const onReject = ()=>{
         toast.info("Appointment Declined");
@@ -45,7 +38,7 @@ function Acart(props) {
             toast.error('Failed to send email');
           }
           // console.log(id,email)
-        // deleteData(id);
+        deleteData(id);
     }
     return (
         <div className="patient-card" style={{ marginBottom: '20px' }}>

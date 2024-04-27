@@ -11,24 +11,24 @@ function Aappointment() {
       return <NoAppoint />;
   }
     return (
-        <div>
-            {data.map((appoint,index) => {
-                return (
-                  <Acart
-                    key={index}
-                    id={appoint._id}
-                    email={appoint.userEmail}
-                    name={appoint.patientName}
-                    number={appoint.patientNumber}
-                    gender={appoint.patientGender}
-                    appointmentTime={appoint.appointmentTime}
-                    preferMode={appoint.preferredMode}
-                    symptomsLevel={appoint.symptomsLevel}
-                    mentalTestScore={appoint.mentalTestScore}
-                  />
-                );
+      <div>
+        {data.map((appoint, index) => {
+          return (
+            <Acart
+              key={index}
+              id={appoint._id}
+              email={appoint.userEmail}
+              name={appoint.patientName}
+              number={appoint.patientNumber}
+              gender={appoint.patientGender}
+              appointmentTime={appoint.appointmentTime}
+              preferMode={appoint.preferredMode}
+              symptomsLevel={appoint.symptomsLevel}
+              mentalTestScore={appoint.mentalTestScore}
+            />
+          );
         })}
-        </div>
+      </div>
     );
 };
 
