@@ -7,7 +7,7 @@ import Notyet from './Notyet.js';
 function History() {
     const { user } = useAuth();
     const { data, error } = useGetData(
-      `http://localhost:5000/gethistory?email=${user?.email}`
+      `https://soul-care.onrender.com/gethistory?email=${user?.email}`
     );
 
     console.log(error);

@@ -82,7 +82,7 @@ function Navbar() {
           </li>
 
           <li>
-            <Link onClick={openNav} to="/appointment">
+            <Link onClick={openNav} to="/Aappointment">
               Appointment
             </Link>
           </li>

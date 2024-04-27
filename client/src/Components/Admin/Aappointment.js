@@ -4,7 +4,7 @@ import useGetData from '../../Auth/useGetData'
 import NoAppoint from '../../Pages/NoAppoint.js'
 
 function Aappointment() {
-    const { data } = useGetData('http://localhost:5000/getappointment');
+    const { data } = useGetData("https://soul-care.onrender.com/getappointment");
 
     // If data is empty, render NotFound component
     if (!data || data.length === 0) {

@@ -21,13 +21,17 @@ function Acart(props) {
     }
     const onAccept = async()=>{
         try {
-            const res = await fetch("http://localhost:5000/sendEmail", {
-              method:"POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body:JSON.stringify({email:email,name:name})
-            });
+            // const res = await fetch("http://localhost:5000/sendEmail", {
+            const res = await fetch(
+              "https://soul-care.onrender.com/sendEmail",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email: email, name: name }),
+              }
+            );
             if(res.status>199 && res.status<300){
                 toast.success("Appointment Accepted");
             } else {

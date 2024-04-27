@@ -57,7 +57,7 @@ function Navbar() {
         </li>
       </ul>
       <div className="dropdown">
-        <Link to={isSign? '#':'/login'} style={linkstyle} className="Login">
+        <Link to={isSign ? "#" : "/login"} style={linkstyle} className="Login">
           <div
             className="Login_btn d-flex align-items-center justify-content-center mt-2"
             style={{ fontSize: "1.5rem" }}
@@ -66,18 +66,23 @@ function Navbar() {
             {isSign ? <>{user.username}</> : <>Login</>}
           </div>
         </Link>
-        {isSign && <div className="dropdown-content">
-          <Link to="/userhistory">
-            <i className="fa-solid fa-notes-medical"></i>History
-          </Link>
-          <Link onClick={() => {
-            SignOut();
-            toast.warning("Signout successfully",{position: "top-center"})
-          }
-          }>
-            <i className="fa-solid fa-right-from-bracket"></i>Logout
-          </Link>
-        </div>}
+        {isSign && (
+          <div className="dropdown-content">
+            <Link to="/userhistory">
+              <i className="fa-solid fa-notes-medical"></i>History
+            </Link>
+            <Link
+              onClick={() => {
+                SignOut();
+                toast.warning("Signout successfully", {
+                  position: "top-center",
+                });
+              }}
+            >
+              <i className="fa-solid fa-right-from-bracket"></i>Logout
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Mobile */}
@@ -93,7 +98,7 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link onClick={openNav} to="/tests">
+            <Link onClick={openNav} to="/testpage">
               Tests
             </Link>
           </li>
@@ -114,10 +119,13 @@ function Navbar() {
           </li>
           <li>
             {isSign ? (
-              <Link onClick={() => {
-                openNav()
-                SignOut()
-              }} to="/">
+              <Link
+                onClick={() => {
+                  openNav();
+                  SignOut();
+                }}
+                to="/"
+              >
                 Logout
               </Link>
             ) : (

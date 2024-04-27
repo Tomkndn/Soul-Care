@@ -23,12 +23,12 @@ const ContactForm = () => {
     }
     try {
       console.log(dataSend)
-      const res = await fetch("http://localhost:5000/sendEmail", {
-        method:"POST",
+      const res = await fetch("https://soul-care.onrender.com/sendEmail", {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify(dataSend)
+        body: JSON.stringify(dataSend),
       });
       if(res.status>199 && res.status<300){
           alert("Send successfully");
